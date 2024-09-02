@@ -38,7 +38,7 @@ const SettingsPage = () => {
       refreshData();
       setIsEditing(false);
     } catch (error) {
-      console.error("Error updating person data:", error);
+      alert(`Error updating person data: ${error}`);
     } finally {
       setIsSubmitting(false);
     }

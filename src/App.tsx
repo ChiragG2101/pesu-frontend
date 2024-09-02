@@ -23,10 +23,10 @@ function App() {
         const data = await response.json();
         document.cookie = `token=${data.token}`;
       } else {
-        console.error("Login failed");
+        alert("Login failed");
       }
     } catch (error) {
-      console.error("Error during login:", error);
+      alert(`Error during login: ${error}`);
     }
   };
 
