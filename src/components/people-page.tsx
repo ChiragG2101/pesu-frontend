@@ -28,15 +28,18 @@ const DataCard = ({ type, count }: { type: string; count: number }) => {
         className="card-image"
         alt="person"
       />
-      {count > 0 && <span>{count}</span>}
+      {count && <span>{count}</span>}
     </div>
   );
 };
 
 const PeoplePage = () => {
   const { personData } = usePersonData();
-  const categories = ["Boy", "Girl", "Man", "Woman"];
-  const chartValues = personData?.people?.map((item) => item.count);
+  const categories = ["Man", "Woman", "Girl", "Boy"];
+
+  const chartValues = personData?.people?.map((item) => item.count) ?? [
+    0, 0, 0, 0,
+  ];
 
   const dataCards = personData?.people?.map((person, index) => (
     <DataCard key={index} type={person.type} count={person.count} />

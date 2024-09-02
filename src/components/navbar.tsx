@@ -10,10 +10,12 @@ const NavbarItem = ({
   to: string;
 }) => {
   return (
-    <li className="navbar-item">
+    <li>
       <NavLink to={to} className="navbar-link">
         <span>{text}</span>
-        {value && <span className="navbar-item-value">{value}</span>}
+        {value !== undefined && value >= 0 && (
+          <span className="navbar-item-value">{value}</span>
+        )}
       </NavLink>
     </li>
   );

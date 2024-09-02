@@ -4,11 +4,11 @@ import { POST } from "../utils/api";
 import EditableDataCard from "./editable-data-card";
 
 const SettingsPage = () => {
-  const { personData, setPersonData } = usePersonData();
+  const { personData, refreshData } = usePersonData();
   const [isEditing, setIsEditing] = useState(false);
   const [formData, setFormData] = useState(personData.people);
-  const [errors, setErrors] = useState<string[]>([]);
-  const [isSubmitting, setIsSubmitting] = useState(false); // Add state for submission status
+  const [errors, setErrors] = useState<string[]>(["", "", "", ""]);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement>,
@@ -18,7 +18,12 @@ const SettingsPage = () => {
     const updatedFormData = [...formData];
     const updatedErrors = [...errors];
 
-    if (name === "count" && parseInt(value) < 0) {
+    console.log("Name:", name, "Value:", value);
+    if (value === null || value === undefined || value.trim() === "") {
+      console.log("Value cannot be empty", value);
+      updatedErrors[index] = "Value cannot be empty";
+    } else if (name === "count" && parseInt(value) < 0) {
+      console.log("Count cannot be negative", value);
       updatedErrors[index] = "Count cannot be negative";
     } else {
       updatedErrors[index] = "";
@@ -28,12 +33,12 @@ const SettingsPage = () => {
     setFormData(updatedFormData);
     setErrors(updatedErrors);
   };
-
+  console.log(errors);
   const handleSubmit = async () => {
     setIsSubmitting(true);
     try {
-      const response = await POST<IPersonData>("people", formData);
-      setPersonData(response);
+      await POST<IPersonData>("people", formData);
+      refreshData();
       setIsEditing(false);
     } catch (error) {
       console.error("Error updating person data:", error);

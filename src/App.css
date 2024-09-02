@@ -3,6 +3,8 @@
 }
 
 .navbar-item {
+}
+.navbar-link {
   height: 30px;
   display: flex;
   align-items: center;
@@ -10,9 +12,6 @@
   gap: 2.5rem;
   padding: 1rem;
   transition: background-color 0.3s;
-}
-.navbar-link {
-  color: white;
   text-decoration: none;
   opacity: 0.9;
 }
