@@ -10,6 +10,7 @@ interface EditableDataCardProps {
   isEditing: boolean;
   handleChange: (e: React.ChangeEvent<HTMLInputElement>, index: number) => void;
   index: number;
+  error: string;
 }
 
 const EditableDataCard: React.FC<EditableDataCardProps> = ({
@@ -17,6 +18,7 @@ const EditableDataCard: React.FC<EditableDataCardProps> = ({
   isEditing,
   handleChange,
   index,
+  error,
 }) => {
   const getImage = () => {
     switch (person.type) {
@@ -48,6 +50,7 @@ const EditableDataCard: React.FC<EditableDataCardProps> = ({
             value={person.count}
             onChange={(e) => handleChange(e, index)}
           />
+          {error && <span style={{ color: "red" }}>{error}</span>}{" "}
         </>
       ) : (
         <>

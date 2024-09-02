@@ -47,7 +47,7 @@ const Navbar = () => {
           gap: "1rem",
         }}
       >
-        {navbarItems.map((item, index) => (
+        {navbarItems?.map((item, index) => (
           <NavbarItem
             key={index}
             text={item.text}
