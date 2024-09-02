@@ -11,6 +11,20 @@
   padding: 1rem;
   transition: background-color 0.3s;
 }
+.navbar-link {
+  color: white;
+  text-decoration: none;
+  opacity: 0.9;
+}
+
+.navbar-link:hover {
+  opacity: 1;
+}
+
+.navbar-link.active {
+  color: white;
+  opacity: 1;
+}
 
 .navbar-item:hover {
   background-color: black;
