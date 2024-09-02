@@ -4,6 +4,22 @@
 
 .navbar-item {
 }
+
+.navbar {
+  background-color: #242424;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5rem;
+}
+
+.navbar-list {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 1rem;
+}
+
 .navbar-link {
   height: 30px;
   display: flex;
@@ -35,6 +51,17 @@
   padding: 0.2rem 0.5rem;
   margin-left: 0.5rem;
 }
+
+.people-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  gap: 2rem;
+}
+
 .chart-container {
   display: flex;
   flex-direction: column;

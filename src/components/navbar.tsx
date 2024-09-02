@@ -32,23 +32,8 @@ const Navbar = () => {
     { text: "Settings", to: "/settings" },
   ];
   return (
-    <nav
-      style={{
-        backgroundColor: "#242424",
-        display: "flex",
-        justifyContent: "space-between",
-        marginBottom: "5rem",
-      }}
-    >
-      <ul
-        style={{
-          display: "flex",
-          listStyle: "none",
-          margin: 0,
-          padding: 0,
-          gap: "1rem",
-        }}
-      >
+    <nav className="navbar">
+      <ul className="navbar-list">
         {navbarItems?.map((item, index) => (
           <NavbarItem
             key={index}
@@ -58,15 +43,7 @@ const Navbar = () => {
           />
         ))}
       </ul>
-      <ul
-        style={{
-          display: "flex",
-          listStyle: "none",
-          margin: 0,
-          padding: 0,
-          gap: "1rem",
-        }}
-      >
+      <ul className="navbar-list">
         <NavbarItem text="Profile" to="/" />
         <NavbarItem text="Log Out" to="/" />
       </ul>

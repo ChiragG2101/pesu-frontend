@@ -6,12 +6,8 @@ import React, {
   useCallback,
 } from "react";
 import { GET } from "../utils/api";
-import { IPeople } from "../types";
+import { IPersonData } from "../types";
 
-export interface IPersonData {
-  totalCount: number;
-  people: IPeople[];
-}
 interface PersonDataContextProps {
   personData: IPersonData;
   setPersonData: React.Dispatch<React.SetStateAction<IPersonData>>;
