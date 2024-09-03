@@ -22,7 +22,7 @@ export async function GET<T>(endpoint: string): Promise<ApiResponse<T>> {
     }
     return (await response.json()) as ApiResponse<T>;
   } catch (error) {
-    alert(`Error making GET request: ${error} `);
+    console.error(`Error making GET request: ${error} `);
     throw error;
   }
 }
@@ -48,7 +48,7 @@ export async function POST<T>(
     }
     return (await response.json()) as ApiResponse<T>;
   } catch (error) {
-    alert(`Error making POST request: ${error}`);
+    console.error(`Error making POST request: ${error}`);
     throw error;
   }
 }
@@ -74,7 +74,7 @@ export async function PUT<T>(
     }
     return (await response.json()) as ApiResponse<T>;
   } catch (error) {
-    alert(`Error making PUT request: ${error}`);
+    console.error(`Error making PUT request: ${error}`);
     throw error;
   }
 }

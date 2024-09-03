@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { usePersonData } from "../context/PeopleDataContext";
 import { POST } from "../utils/api";
 import EditableDataCard from "./editable-data-card";
 import { IPersonData } from "../types";
+import toast from "react-hot-toast";
 
 const SettingsPage = () => {
   const { personData, refreshData } = usePersonData();
@@ -10,6 +11,10 @@ const SettingsPage = () => {
   const [formData, setFormData] = useState(personData.people);
   const [errors, setErrors] = useState<string[]>(["", "", "", ""]);
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  useEffect(() => {
+    setFormData(personData.people);
+  }, [personData]);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement>,
@@ -36,9 +41,10 @@ const SettingsPage = () => {
     try {
       await POST<IPersonData>("people", formData);
       refreshData();
+      toast.success("People data updated successfully");
       setIsEditing(false);
     } catch (error) {
-      alert(`Error updating person data: ${error}`);
+      toast.error(`Error updating person data: ${error}`);
     } finally {
       setIsSubmitting(false);
     }
@@ -59,7 +65,7 @@ const SettingsPage = () => {
           />
         ))}
       </div>
-      <div style={{ display: "flex", gap: "1rem" }}>
+      <div style={{ display: "flex", flexWrap: "wrap", gap: "1rem" }}>
         <button onClick={() => setIsEditing(!isEditing)}>
           {isEditing ? "Cancel" : "Edit"}
         </button>

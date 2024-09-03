@@ -42,6 +42,8 @@ h1 {
 .data-card-container {
   display: flex;
   gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 button {

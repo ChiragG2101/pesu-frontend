@@ -36,7 +36,7 @@ export const PersonDataProvider: React.FC<{ children: React.ReactNode }> = ({
       const response = await GET<IPersonData>(`people`);
       setPersonData(response);
     } catch (error) {
-      alert(error);
+      toast.error(error);
     }
   }, []);
 
