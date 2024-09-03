@@ -34,8 +34,13 @@ export const PersonDataProvider: React.FC<{ children: React.ReactNode }> = ({
 
   const fetchData = useCallback(async () => {
     try {
-      const response = await GET<IPersonData>(`people`);
-      setPersonData(response);
+      const token = document.cookie
+        .split("; ")
+        .find((row) => row.startsWith("token="));
+      if (token) {
+        const response = await GET<IPersonData>(`people`);
+        setPersonData(response);
+      }
     } catch (error) {
       if (error instanceof Error) {
         toast.error(error.message);
