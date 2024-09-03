@@ -22,7 +22,7 @@ export async function GET<T>(endpoint: string): Promise<ApiResponse<T>> {
     }
     return (await response.json()) as ApiResponse<T>;
   } catch (error) {
-    alert("Error making GET request:", error);
+    alert(`Error making GET request: ${error} `);
     throw error;
   }
 }
@@ -30,6 +30,7 @@ export async function GET<T>(endpoint: string): Promise<ApiResponse<T>> {
 // Function to make a POST request
 export async function POST<T>(
   endpoint: string,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   data: any
 ): Promise<ApiResponse<T>> {
   const token = Cookies.get("token");
@@ -47,7 +48,7 @@ export async function POST<T>(
     }
     return (await response.json()) as ApiResponse<T>;
   } catch (error) {
-    alert("Error making POST request:", error);
+    alert(`Error making POST request: ${error}`);
     throw error;
   }
 }
@@ -55,6 +56,7 @@ export async function POST<T>(
 // Function to make a PUT request
 export async function PUT<T>(
   endpoint: string,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   data: any
 ): Promise<ApiResponse<T>> {
   const token = Cookies.get("token");
@@ -72,7 +74,7 @@ export async function PUT<T>(
     }
     return (await response.json()) as ApiResponse<T>;
   } catch (error) {
-    alert("Error making PUT request:", error);
+    alert(`Error making PUT request: ${error}`);
     throw error;
   }
 }
