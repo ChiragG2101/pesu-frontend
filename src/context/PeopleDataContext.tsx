@@ -7,6 +7,7 @@ import React, {
 } from "react";
 import { GET } from "../utils/api";
 import { IPersonData } from "../types";
+import toast from "react-hot-toast";
 
 interface PersonDataContextProps {
   personData: IPersonData;
@@ -36,7 +37,11 @@ export const PersonDataProvider: React.FC<{ children: React.ReactNode }> = ({
       const response = await GET<IPersonData>(`people`);
       setPersonData(response);
     } catch (error) {
-      toast.error(error);
+      if (error instanceof Error) {
+        toast.error(error.message);
+      } else {
+        toast.error("An unknown error occurred");
+      }
     }
   }, []);
 
