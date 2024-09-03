@@ -1,4 +1,3 @@
-import React from "react";
 import { usePersonData } from "../context/PeopleDataContext";
 import toast from "react-hot-toast";
 
