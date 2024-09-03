@@ -21,6 +21,7 @@ const HomePage = () => {
         const data = await response.json();
         document.cookie = `token=${data.token}`;
         refreshData();
+        toast.success("Login successful");
       } else {
         toast.error("Login failed");
       }
